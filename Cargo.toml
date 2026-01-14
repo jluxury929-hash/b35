@@ -1,17 +1,23 @@
 [package]
 name = "apex_omega"
-version = "3.0.0"
+version = "3.1.0"
 edition = "2021"
 
 [dependencies]
-# EVM & Flashbots
+# Ethereum & Flashbots
 ethers = { version = "2.0", features = ["ws", "rustls", "abigen"] }
 ethers-flashbots = "0.14"
 
-# Async & Runtime
+# Async & Networking (Using Rustls to fix "No such file" dependency errors)
 tokio = { version = "1.0", features = ["full"] }
-anyhow = "1.0"
+reqwest = { version = "0.11", default-features = false, features = ["json", "rustls-tls"] }
+url = "2.0"
+
+# Data & Config
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 dotenv = "0.15"
+anyhow = "1.0"
 
 # Math & Graph
 petgraph = "0.6"
@@ -20,4 +26,9 @@ petgraph = "0.6"
 colored = "2.0"
 log = "0.4"
 env_logger = "0.10"
-url = "2.0"
+
+# --- THE PATH FIX ---
+# Forces Cargo to compile main.rs from the root folder
+[[bin]]
+name = "apex_omega"
+path = "main.rs"
