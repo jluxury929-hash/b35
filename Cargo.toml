@@ -1,0 +1,23 @@
+[package]
+name = "apex_omega"
+version = "3.0.0"
+edition = "2021"
+
+[dependencies]
+# EVM & Flashbots
+ethers = { version = "2.0", features = ["ws", "rustls", "abigen"] }
+ethers-flashbots = "0.14"
+
+# Async & Runtime
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+dotenv = "0.15"
+
+# Math & Graph
+petgraph = "0.6"
+
+# UI & Logging
+colored = "2.0"
+log = "0.4"
+env_logger = "0.10"
+url = "2.0"
